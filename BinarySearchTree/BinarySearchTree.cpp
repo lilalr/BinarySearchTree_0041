@@ -57,7 +57,7 @@ public:
 
 	void search(string element, Node*& parent, Node*& currentNode)
 	{
-		// This Function searches the currentNode of the specified Node as well as the current Node of its per
+		// This Function searches the currentNode of the specified Node as well as the current Node of its parent
 		currentNode = ROOT;
 		parent = NULL;
 		while ((currentNode != NULL) && (currentNode->info != element))
@@ -102,6 +102,7 @@ public:
 
 	void postorder(Node* ptr)
 	{
+		// performs the postorder traversal of the tree
 		if (ROOT == NULL)
 		{
 			cout << "Tree is empty" << endl;
@@ -118,7 +119,7 @@ public:
 
 int main()
 {
-	BinaryTree x;
+	BinaryTree obj;
 	while (true)
 	{
 		cout << "\nMenu" << endl;
@@ -137,10 +138,15 @@ int main()
 		{
 		case '1':
 		{
-			cout << "Enter & word: ";
+			cout << "Enter a word: ";
 			string word;
 			cin >> word;
-			x.insert(word);
+			obj.insert(word);
+			break;
+		}
+		case '2':
+		{
+			obj.inorder(obj.ROOT);
 			break;
 		}
 		
