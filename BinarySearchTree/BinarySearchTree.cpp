@@ -7,14 +7,14 @@ class Node
 {
 public:
 	string info;
-	Node* leftchild;
+	Node* leftchild; // node = objek
 	Node* rightchild;
 
 	// constructor for the node class
 	Node(string i, Node* l, Node* r)
 	{
 		info = i;
-		leftchild = l;
+		leftchild = l;	// parameter
 		rightchild = r;
 	}	
 };
@@ -26,7 +26,7 @@ public:
 
 	BinaryTree()
 	{
-		ROOT = nullptr; // initializing ROOT to null
+		ROOT = nullptr; // initializing ROOT to null	// menunjukkan nilai ROOT = NULL
 	}
 
 	void insert(string element) // insert a node in the binary search tree
@@ -44,16 +44,34 @@ public:
 		{
 			ROOT = newNode; // mark the new node as ROOT
 			return; // exit
-
-			if (element < parent->info) // if the value in the data field of the new node is less than that of the parent
-			{
-				parent->leftchild = newNode; // make the left child of the parent point to the new node
-			}
-			else if (element > parent->info) // if the value in the data field of the new data is greater than that of the parent
-			{
-				parent->rightchild = newNode; // make the right child of the parent poin to the new node
-			}
-
+		}
+		if (element < parent->info) // if the value in the data field of the new node is less than that of the parent
+		{
+			parent->leftchild = newNode; // make the left child of the parent point to the new node
+		}
+		else if (element > parent->info) // if the value in the data field of the new data is greater than that of the parent
+		{
+			parent->rightchild = newNode; // make the right child of the parent poin to the new node
 		}
 	}
+
+	void search(string element, Node*& parent, Node*& currentNode)
+	{
+		// This Function searches the currentNode of the specified Node as well as the current Node of its per
+		currentNode = ROOT;
+		parent = NULL;
+		while ((currentNode != NULL) && (currentNode->info != element))
+		{
+			parent = currentNode;
+			if (element < currentNode->info)
+				currentNode = currentNode->leftchild;
+			else
+				currentNode = currentNode->rightchild;
+		}
+	}
+
+
+
+	}
+
 };
